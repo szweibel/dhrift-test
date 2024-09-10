@@ -22,7 +22,7 @@ process.env.NEXT_PUBLIC_GITHUBSECRET = process.env.GITHUBSECRET || false;
 const nextConfig = {
     output: "export",
     trailingSlash: true,
-    basePath: isGitHub ? '/' + repoName : '',
+    // basePath: isGitHub ? '/' + repoName : '',
     assetPrefix: isGitHub ? '/' + repoName : '',
     images: {
         unoptimized: true,

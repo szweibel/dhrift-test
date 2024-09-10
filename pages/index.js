@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function Home() {
 
   useEffect(() => {
-    const urlBase = window.location.origin
+    const urlBase = window.location.href.split('?')[0]
     window.location = urlBase + '/inst?instUser=dhri-curriculum&instRepo=dhrift-site-template'
   })
 

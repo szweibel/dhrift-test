@@ -27,7 +27,7 @@ const nextConfig = {
     output: "export",
     trailingSlash: true,
     // basePath: isGitHub ? '/' + repoName : '',
-    assetPrefix: nextConfig.basePath,
+    assetPrefix: basePath,
     images: {
         unoptimized: true,
     },

@@ -13,13 +13,14 @@ if (isGitHub) {
 }else{
     repoName = 'dhrift';
 }
+
+
 const build = process.env.NODE_ENV === "production";
 console.log(`Running in ${process.env.NODE_ENV} mode`);
 process.env.NEXT_PUBLIC_REPO_NAME = repoName
 process.env.NEXT_PUBLIC_GITHUB_ACTIONS = process.env.GITHUB_ACTIONS || false;
 process.env.NEXT_PUBLIC_GITHUBSECRET = process.env.GITHUBSECRET || false;
-process.env.NEXT_PUBLIC_SUBDIR = process.env.SUBDIR || false;
-console.log(`subdir? ${process.env.NEXT_PUBLIC_SUBDIR}`);
+process.env.NEXT_PUBLIC_ASSET_PREFIX = isGitHub ? '/' + repoName : '';
 
 const nextConfig = {
     output: "export",

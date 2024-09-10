@@ -9,6 +9,7 @@ console.log(`Running in ${isGitHub ? "GitHub Actions" : "local"} mode`);
 var repoName;
 if (isGitHub) {
     repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+    console.log(`Repo name: ${repoName}`);
 }else{
     repoName = 'dhrift';
 }
@@ -21,8 +22,8 @@ process.env.NEXT_PUBLIC_GITHUBSECRET = process.env.GITHUBSECRET || false;
 const nextConfig = {
     output: "export",
     trailingSlash: true,
-    // basePath: isGitHub ? '/' + repoName : '',
-    // assetPrefix: isGitHub ? '/' + repoName : '',
+    basePath: isGitHub ? '/' + repoName : '',
+    assetPrefix: isGitHub ? '/' + repoName : '',
     images: {
         unoptimized: true,
     },

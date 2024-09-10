@@ -96,9 +96,9 @@ jobs:
     needs: build
     steps:
       - name: Set page_url as env variable
-        id: deployment
+        id: deployment1
         run: echo "page_url=${{ steps.deployment.outputs.page_url }}" >> $GITHUB_ENV
 
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deployment2
         uses: actions/deploy-pages@v2

@@ -1,5 +1,6 @@
 const withYAML = require('next-yaml')
-const withPlugins = require('next-compose-plugins')
+const withPlugins = require('next-compose-plugins');
+const { default: next } = require('next');
 const withMDX = require('@next/mdx')({
     extension: /\.(md|mdx)$/,
 })
@@ -26,7 +27,7 @@ const nextConfig = {
     output: "export",
     trailingSlash: true,
     // basePath: isGitHub ? '/' + repoName : '',
-    assetPrefix: isGitHub ? '/' + repoName : '',
+    assetPrefix: nextConfig.basePath,
     images: {
         unoptimized: true,
     },

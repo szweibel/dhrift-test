@@ -1,0 +1,34 @@
+name: Set GitHub Pages URL
+
+on:
+  push:
+    branches:
+      - main  # or any branch that deploys to GitHub Pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages  # Or the branch used for GitHub Pages
+
+      - name: Set GitHub Pages URL
+        id: set-url
+        run: |
+          if [ -f CNAME ]; then
+            # Use the custom domain from the CNAME file
+            CUSTOM_DOMAIN=$(cat CNAME)
+            echo "GITHUB_PAGES_URL=http://$CUSTOM_DOMAIN" >> $GITHUB_ENV
+          else
+            # Standard GitHub Pages URL based on repository name and owner
+            if [[ "${{ github.repository }}" == "${{ github.repository_owner }}/*.github.io" ]]; then
+              # User/Organization GitHub Pages URL
+              echo "GITHUB_PAGES_URL=https://${{ github.repository_owner }}.github.io" >> $GITHUB_ENV
+            else
+              # Project GitHub Pages URL
+              echo "GITHUB_PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.repository }}" >> $GITHUB_ENV
+            fi
+          fi
+        shell: bash

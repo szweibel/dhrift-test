@@ -27,7 +27,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      base_url: ${{ steps.setup-pages.outputs.base_url }}
+      base_path: ${{ steps.setup-pages.outputs.base_path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -79,7 +79,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           GITHUBSECRET: ${{ secrets.GITHUBKEY }}
-          PAGE_URL: ${{ steps.setup-pages.outputs.base_url }}
+          PAGES_PATH: ${{ steps.setup-pages.outputs.base_path }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
         env:

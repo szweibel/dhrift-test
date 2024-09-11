@@ -15,7 +15,7 @@ if (isGitHub) {
     repoName = 'dhrift';
 }
 
-console.log(`page url var? ${process.env.PAGE_URL}`);
+console.log(`page url var? ${process.env.PAGES_PATH}`);
 
 const build = process.env.NODE_ENV === "production";
 console.log(`Running in ${process.env.NODE_ENV} mode`);
@@ -27,7 +27,7 @@ process.env.NEXT_PUBLIC_ASSET_PREFIX = isGitHub ? '/' + repoName : '';
 const nextConfig = {
     output: "export",
     trailingSlash: true,
-    // basePath: isGitHub ? '/' + repoName : '',
+    basePath: process.env.PAGE_URL || '',
     images: {
         unoptimized: true,
     },

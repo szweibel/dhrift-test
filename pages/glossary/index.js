@@ -10,6 +10,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Header from '../../components/Header';
+import { Container } from '@mui/material'
 
 
 export default function Glossary({ glossary, ...props }) {
@@ -146,7 +147,7 @@ export default function Glossary({ glossary, ...props }) {
         <Header title={'Glossary'} instUser={props.instGitUser} instRepo={props.instGitRepo}
             gitUser={props.gitUser} gitRepo={props.gitRepo}
           />
-        <div className="glossary mui-container">
+        <Container className="glossary mui-container">
             <div className="glossary-header">
                 <h1>Glossary</h1>
                 <div className="letter-selector">
@@ -156,7 +157,7 @@ export default function Glossary({ glossary, ...props }) {
             <div className="glossary-content">
                 {currentGlossaryPage}
             </div>
-        </div>
+        </Container>
         </>
     )
 }

@@ -26,8 +26,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    outputs:
-      base_path: ${{ steps.setup-pages.outputs.base_path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -54,7 +52,6 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
-        id: setup-pages
         uses: actions/configure-pages@v3
         with:
           # Automatically inject basePath in your Next.js configuration file and disable
@@ -62,7 +59,6 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
-  
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -79,7 +75,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
           GITHUBSECRET: ${{ secrets.GITHUBKEY }}
-          PAGES_PATH: ${{ steps.setup-pages.outputs.base_path }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
         env:

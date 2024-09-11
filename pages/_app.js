@@ -40,6 +40,8 @@ function MyApp({ Component, pageProps }) {
     if (urlParams.get('user') && urlParams.get('repo')) {
       setGitUser(urlParams.get('user'));
       setGitRepo(urlParams.get('repo'));
+    } else {
+      console.error('GitHub user or repository is not specified in the URL.');
     }
     if (urlParams.get('edit') === 'true') {
       if (cacheCleared == false) {
@@ -69,7 +71,6 @@ function MyApp({ Component, pageProps }) {
   Object.assign(pageProps, {
     title, setTitle, workshopMode, setWorkshopMode,
   })
-  const base = '/' + process.env.NEXT_PUBLIC_REPO_NAME
 
   // useCacheProvider hook
   function useCacheProvider() {

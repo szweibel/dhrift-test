@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Breadcrumbs } from '@mui/material';
-import dynamic from 'next/dynamic';
 
 
 export default function WorkshopHeader({ currentPage, setCurrentPage, pageTitles, pages, workshopTitle,
@@ -26,21 +25,17 @@ export default function WorkshopHeader({ currentPage, setCurrentPage, pageTitles
 
     useEffect(() => {
         if (queryString) {
-            const currentURL = window.location.pathname;
-            console.log(currentURL);
             const urlParams = new URLSearchParams(queryString);
             urlParams.set('page', currentPageParentPage);
-            setParentLink(`${'../dynamic'}?${urlParams}`);
+            setParentLink(`${window.location.pathname}?${urlParams}`);
         }
     }, [currentPageParentPage])
 
     useEffect(() => {
         if (queryString) {
-            const currentURL = window.location.pathname;
-            console.log(currentURL);
             const urlParams = new URLSearchParams(queryString);
             urlParams.set('page', 1);
-            setFirstPageLink(`${'../dynamic'}?${urlParams}`);
+            setFirstPageLink(`${window.location.pathname}?${urlParams}`);
         }
     }, [queryString])
 

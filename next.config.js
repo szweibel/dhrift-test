@@ -27,7 +27,7 @@ process.env.NEXT_PUBLIC_ASSET_PREFIX = isGitHub ? '/' + repoName : '';
 const nextConfig = {
     output: "export",
     trailingSlash: true,
-    basePath: '',
+    basePath: process.env.PAGES_PATH || '',
     images: {
         unoptimized: true,
     },

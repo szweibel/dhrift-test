@@ -85,6 +85,7 @@ export default function WorkshopPage({
   const uploads = useUploads({ setAllUploads, allUploads, gitUser, gitRepo, gitFile, uploadsURL, setUploadsURL, ...props });
 
   const router = useRouter();
+  const currentPath = router.asPath;
 
   // convert markdown to html and split into pages
   const convertContenttoHTML = function (content) {
@@ -175,7 +176,7 @@ export default function WorkshopPage({
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set('page', 2);
-    setSecondPageLink(`${window.location.pathname}?${urlParams}`);
+    setSecondPageLink(`${currentPath}?${urlParams}`);
     if (currentFile != null && content != '' && metadata != null && allUploads != undefined) {
       const frontMatterContent = Frontmatter(currentFile, setCurrentPage, setCurrentContent, pages, instUser, instRepo, workshopTitle, pageTitles, currentPage, router, secondPageLink);
       setPages([frontMatterContent, ...convertContenttoHTML(content)]);

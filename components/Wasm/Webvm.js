@@ -3,6 +3,7 @@ import Script from 'next/script';
 import Head from 'next/head';
 
 export default function Webvm(props) {
+    console.log(process.env.NEXT_PUBLIC_ASSET_PREFIX +'/coi-serviceworker.js')
     return (
         <div className='webvm'>
             <Head>

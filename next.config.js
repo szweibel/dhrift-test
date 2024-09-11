@@ -15,7 +15,7 @@ if (isGitHub) {
     repoName = 'dhrift';
 }
 
-console.log(`page url var? ${process.env.page_url}`);
+console.log(`page url var? ${process.env.PAGE_URL}`);
 
 const build = process.env.NODE_ENV === "production";
 console.log(`Running in ${process.env.NODE_ENV} mode`);

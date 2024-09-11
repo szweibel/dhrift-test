@@ -11,7 +11,6 @@ export default function Webvm(props) {
             </Head>
             {/* <EditorTopbar {...props} /> */}
 <iframe src='./webvm/index.html' width='100%' height='95%' id="iframe"></iframe>
-            // <iframe src='../../webvm/index.html' width='100%' height='95%' id="iframe"></iframe>
         </div>
     )
 }

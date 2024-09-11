@@ -1,5 +1,4 @@
-const withYAML = require('next-yaml')
-const withPlugins = require('next-compose-plugins');
+
 const { default: next } = require('next');
 const withMDX = require('@next/mdx')({
     extension: /\.(md|mdx)$/,
@@ -38,7 +37,5 @@ const nextConfig = {
 
 console.log(nextConfig);
 
-module.exports = withPlugins([
-    [withYAML],
-    // [withMDX],
-], nextConfig);
+
+module.exports = nextConfig;

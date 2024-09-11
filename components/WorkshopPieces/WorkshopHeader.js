@@ -23,23 +23,19 @@ export default function WorkshopHeader({ currentPage, setCurrentPage, pageTitles
         setQueryString(window.location.search);
     }, [router])
 
-    const currentPathBeforeQuery = router.asPath.split('?')[0];
-
     useEffect(() => {
-        console.log('currentPathBeforeQuery', currentPathBeforeQuery);
         if (queryString) {
             const urlParams = new URLSearchParams(queryString);
             urlParams.set('page', currentPageParentPage);
-            setParentLink(`${currentPathBeforeQuery}?${urlParams}`);
+            setParentLink(`${window.location.pathname}?${urlParams}`);
         }
     }, [currentPageParentPage])
 
     useEffect(() => {
-        console.log('currenturl', currentPathBeforeQuery);
         if (queryString) {
             const urlParams = new URLSearchParams(queryString);
             urlParams.set('page', 1);
-            setFirstPageLink(`${currentPathBeforeQuery}?${urlParams}`);
+            setFirstPageLink(`${window.location.pathname}?${urlParams}`);
         }
     }, [queryString])
 
